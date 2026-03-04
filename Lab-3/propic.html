@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+fieldset {
+  width: 350px;
+  padding: 15px;
+}
+
+.line {
+  border-bottom: 2px solid black;
+  margin: 15px 0;
+}
+</style>
+</head>
+<body>
+
+<form>
+
+<fieldset>
+  <legend>Profile Picture</legend>
+
+  User Id
+  <input type="text" id="userid">
+  <br><br>
+
+  Picture
+  <input type="file" id="picture">
+
+  <div class="line"></div>
+
+  <button type="button" onclick="validateProfile()">Submit</button>
+
+</fieldset>
+
+<p id="profileMsg"></p>
+
+</form>
+
+<script>
+function validateProfile() {
+
+  let userid = document.getElementById("userid").value;
+  let picture = document.getElementById("picture").value;
+
+  if (userid === "") {
+    document.getElementById("profileMsg").innerHTML =
+    "UserId cannot be empty";
+    return;
+  }
+
+  userid = Number(userid);
+
+  if (isNaN(userid) || userid <= 0) {
+    document.getElementById("profileMsg").innerHTML =
+    "UserId has to be a positive number";
+    return;
+  }
+
+  if (picture === "") {
+    document.getElementById("profileMsg").innerHTML =
+    "Picture cannot be empty";
+    return;
+  }
+
+  document.getElementById("profileMsg").innerHTML = "Valid";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Final Assignment</title>
+
+<style>
+.container {
+  width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  padding: 8px;
+}
+
+.line {
+  border-bottom: 2px solid black;
+  margin: 10px 0;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>Person Profile</h2>
+
+<form id="mainForm">
+
+<table>
+
+<tr>
+<td>Name</td>
+<td><input type="text" id="name"></td>
+</tr>
+
+<tr>
+<td>Email</td>
+<td><input type="text" id="email"></td>
+</tr>
+
+<tr>
+<td>Gender</td>
+<td>
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<input type="radio" name="gender" value="Other"> Other
+</td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td>
+<input type="text" id="dd" size="3"> /
+<input type="text" id="mm" size="3"> /
+<input type="text" id="yyyy" size="5">
+</td>
+</tr>
+
+<tr>
+<td>Degree</td>
+<td>
+<input type="checkbox" id="ssc"> SSC
+<input type="checkbox" id="hsc"> HSC
+<input type="checkbox" id="bsc"> BSc
+</td>
+</tr>
+
+<tr>
+<td>Blood Group</td>
+<td>
+<select id="blood"></select>
+</td>
+</tr>
+
+<tr>
+<td>User Id</td>
+<td><input type="text" id="userid"></td>
+</tr>
+
+<tr>
+<td>Picture</td>
+<td><input type="file" id="picture"></td>
+</tr>
+
+</table>
+
+<div class="line"></div>
+
+<div class="buttons">
+<button type="button" onclick="validateAll()">Submit</button>
+<button type="reset">Reset</button>
+</div>
+
+<p id="finalMsg"></p>
+
+</form>
+</div>
+
+<script>
+
+
+let bloodSelect = document.getElementById("blood");
+let groups = ["Select","A+","A-","B+","B-","O+","O-","AB+","AB-"];
+
+for (let i = 0; i < groups.length; i++) {
+  let option = document.createElement("option");
+  option.text = groups[i];
+
+  if (i == 0)
+    option.value = "";
+  else
+    option.value = groups[i];
+
+  bloodSelect.add(option);
+}
+
+
+function validateName() {
+  let name = document.getElementById("name").value.trim();
+  if (name == "") return "Name cannot be empty";
+
+  let first = name.charAt(0);
+  if (!((first >= 'a' && first <= 'z') || (first >= 'A' && first <= 'Z')))
+    return "Name must start with a letter";
+
+  let words = name.split(" ");
+  let count = 0;
+  for (let i = 0; i < words.length; i++)
+    if (words[i] != "") count++;
+
+  if (count < 2) return "Name must contain at least two words";
+
+  for (let i = 0; i < name.length; i++) {
+    let ch = name.charAt(i);
+    if (!((ch >= 'a' && ch <= 'z') ||
+          (ch >= 'A' && ch <= 'Z') ||
+          ch == '.' || ch == '-' || ch == ' '))
+      return "Invalid character in Name";
+  }
+  return "";
+}
+
+
+function validateEmail() {
+  let email = document.getElementById("email").value.trim();
+  if (email == "") return "Email cannot be empty";
+
+  let parts = email.split("@");
+  if (parts.length != 2) return "Invalid Email";
+
+  if (parts[0] == "" || parts[1] == "") return "Invalid Email";
+
+  if (!parts[1].includes(".")) return "Invalid Email";
+
+  return "";
+}
+
+
+function validateGender() {
+  let genders = document.getElementsByName("gender");
+  for (let i = 0; i < genders.length; i++)
+    if (genders[i].checked) return "";
+  return "Select a Gender";
+}
+
+
+function validateDOB() {
+  let day = document.getElementById("dd").value;
+  let month = document.getElementById("mm").value;
+  let year = document.getElementById("yyyy").value;
+
+  if (day=="" || month=="" || year=="")
+    return "Date of Birth cannot be empty";
+
+  day = Number(day);
+  month = Number(month);
+  year = Number(year);
+
+  if (isNaN(day) || isNaN(month) || isNaN(year))
+    return "DOB must be valid numbers";
+
+  if (day<0 || day>31 || month<1 || month>12 || year<1900 || year>2016)
+    return "DOB out of range";
+
+  return "";
+}
+
+
+function validateDegree() {
+  if (!document.getElementById("ssc").checked &&
+      !document.getElementById("hsc").checked &&
+      !document.getElementById("bsc").checked)
+    return "Select at least one Degree";
+
+  return "";
+}
+
+
+function validateBlood() {
+  if (document.getElementById("blood").value == "")
+    return "Select Blood Group";
+  return "";
+}
+
+
+function validateProfile() {
+  let userid = document.getElementById("userid").value;
+  let picture = document.getElementById("picture").value;
+
+  if (userid == "") return "UserId cannot be empty";
+
+  userid = Number(userid);
+  if (isNaN(userid) || userid <= 0)
+    return "UserId must be positive number";
+
+  if (picture == "") return "Picture must be selected";
+
+  return "";
+}
+
+
+function validateAll() {
+
+  let msg =
+    validateName() ||
+    validateEmail() ||
+    validateGender() ||
+    validateDOB() ||
+    validateDegree() ||
+    validateBlood() ||
+    validateProfile();
+
+  if (msg == "")
+    document.getElementById("finalMsg").innerHTML =
+      "All validations passed successfully!";
+  else
+    document.getElementById("finalMsg").innerHTML = msg;
+}
+
+</script>
+
+</body>
+</html>

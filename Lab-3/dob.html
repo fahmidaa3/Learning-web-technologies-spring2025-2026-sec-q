@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Date of Birth</title>
+
+<style>
+  .container {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid black;
+  }
+
+  .labels span {
+    display: inline-block;
+    width: 60px;
+  }
+
+  .inputs input {
+    width: 50px;
+    text-align: center;
+  }
+
+  .line {
+    margin-top: 10px;
+    border-bottom: 2px solid black;
+    width: 190px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h3>Date of Birth</h3>
+
+  <div class="labels">
+    <span>dd</span>
+    <span>mm</span>
+    <span>yyyy</span>
+  </div>
+
+  <div class="inputs">
+    <input type="text" id="dd"> /
+    <input type="text" id="mm"> /
+    <input type="text" id="yyyy">
+  </div>
+
+  <div class="line"></div>
+
+  <button onclick="validateDate()">Submit</button>
+
+  <p id="message"></p>
+</div>
+
+<script>
+function validateDate() {
+
+  let day = document.getElementById("dd").value;
+  let month = document.getElementById("mm").value;
+  let year = document.getElementById("yyyy").value;
+
+  if (day === "" || month === "" || year === "") {
+    document.getElementById("message").innerHTML = "Cannot be empty";
+    return;
+  }
+
+  day = Number(day);
+  month = Number(month);
+  year = Number(year);
+
+  if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    document.getElementById("message").innerHTML = "Must be valid numbers";
+    return;
+  }
+
+  if (day < 0 || day > 31) {
+    document.getElementById("message").innerHTML = "Day must be 0-31";
+    return;
+  }
+
+  if (month < 1 || month > 12) {
+    document.getElementById("message").innerHTML = "Month must be 1-12";
+    return;
+  }
+
+  if (year < 1900 || year > 2016) {
+    document.getElementById("message").innerHTML = "Year must be 1900-2016";
+    return;
+  }
+
+  document.getElementById("message").innerHTML = "Valid Date!";
+}
+</script>
+
+</body>
+</html>

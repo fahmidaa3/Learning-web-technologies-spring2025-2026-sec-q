@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Name Page</title>
+</head>
+<body>
+
+<h3>Name</h3>
+
+<input type="text" id="name">
+<br><br>
+<input type="button" value="Submit" onclick="validateName()">
+
+<p id="N1"></p>
+
+<script>
+function validateName() {
+
+  let name = document.getElementById("name").value;
+  name = name.trim();   // remove extra spaces at start and end
+
+  // 1. Cannot be empty
+  if (name == "") {
+    document.getElementById("N1").innerHTML = "Cannot be empty";
+    return;
+  }
+
+  // 2. Must start with a letter
+  let first = name.charAt(0);
+  if (!((first >= 'a' && first <= 'z') || 
+        (first >= 'A' && first <= 'Z'))) {
+
+    document.getElementById("N1").innerHTML = "Must start with a letter";
+    return;
+  }
+
+  // 3. Must contain at least two words
+  let words = name.split(" ");
+  let wordCount = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] != "") {
+      wordCount++;
+    }
+  }
+
+  if (wordCount < 2) {
+    document.getElementById("N1").innerHTML = "At least two words required";
+    return;
+  }
+
+  // 4. Allowed characters check
+  for (let i = 0; i < name.length; i++) {
+    let ch = name.charAt(i);
+
+    if (!((ch >= 'a' && ch <= 'z') ||
+          (ch >= 'A' && ch <= 'Z') ||
+          ch == '.' || ch == '-' || ch == ' ')) {
+
+      document.getElementById("N1").innerHTML = "Invalid character";
+      return;
+    }
+  }
+
+  // If all conditions pass
+  document.getElementById("N1").innerHTML = "Valid Name";
+}
+</script>
+
+</body>
+</html>

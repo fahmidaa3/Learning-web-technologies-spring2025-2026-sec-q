@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gender</title>
+
+<style>
+fieldset {
+  width: 250px;
+}
+</style>
+
+</head>
+<body>
+
+<h3>Gender</h3>
+
+<fieldset>
+  <legend>Gender</legend>
+
+  <input type="radio" name="gender"> Male
+  <input type="radio" name="gender"> Female
+  <input type="radio" name="gender"> Other
+
+</fieldset>
+
+<br>
+
+<input type="button" value="Submit" onclick="validateGender()">
+
+<p id="G1"></p>
+
+<script>
+function validateGender() {
+
+  let g = document.getElementsByName("gender");
+  let selected = false;
+
+  for (let i = 0; i < g.length; i++) {
+    if (g[i].checked) {
+      selected = true;
+      break;
+    }
+  }
+
+  if (!selected) {
+    document.getElementById("G1").innerHTML = "Select one option";
+    return;
+  }
+
+  document.getElementById("G1").innerHTML = "Valid";
+
+}
+</script>
+
+</body>
+</html>

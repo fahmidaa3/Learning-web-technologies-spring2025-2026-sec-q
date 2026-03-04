@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.line {
+  width: 200px;
+  border-bottom: 2px solid black;
+  margin: 10px 0;
+}
+</style>
+</head>
+<body>
+
+<label><b>Blood Group</b></label>
+
+<select id="blood">
+  <option value="">Select</option>
+  <option>A+</option>
+  <option>A-</option>
+  <option>B+</option>
+  <option>B-</option>
+  <option>O+</option>
+  <option>O-</option>
+  <option>AB+</option>
+  <option>AB-</option>
+</select>
+
+<div class="line"></div>
+
+<button type="button" onclick="validateBlood()">Submit</button>
+
+<p id="bloodMsg"></p>
+
+<script>
+function validateBlood() {
+
+  let blood = document.getElementById("blood").value;
+
+  if (blood === "") {
+    document.getElementById("bloodMsg").innerHTML =
+    "Must be selected";
+    return;
+  }
+
+  document.getElementById("bloodMsg").innerHTML = "Valid";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .calculator{
+            width: 220px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid black;
+        }
+
+        input{
+            width: 200px;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 20px;
+        }
+
+        button{
+            width: 45px;
+            height: 40px;
+            margin: 2px;
+            font-size: 16px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="calculator">
+
+<input type="text" id="display" readonly>
+
+<br>
+
+<button onclick="addNumber(7)">7</button>
+<button onclick="addNumber(8)">8</button>
+<button onclick="addNumber(9)">9</button>
+<button onclick="setOperator('+')">+</button>
+
+<br>
+
+<button onclick="addNumber(4)">4</button>
+<button onclick="addNumber(5)">5</button>
+<button onclick="addNumber(6)">6</button>
+<button onclick="setOperator('-')">-</button>
+
+<br>
+
+<button onclick="addNumber(1)">1</button>
+<button onclick="addNumber(2)">2</button>
+<button onclick="addNumber(3)">3</button>
+<button onclick="setOperator('*')">*</button>
+
+<br>
+
+<button onclick="addNumber(0)">0</button>
+<button onclick="addDecimal()">.</button>
+<button onclick="calculate()">=</button>
+<button onclick="setOperator('/')">/</button>
+
+<br>
+
+<button onclick="clearDisplay()">C</button>
+
+</div>
+<script src = "script.js"></script>
+
+</body>
+</html>
