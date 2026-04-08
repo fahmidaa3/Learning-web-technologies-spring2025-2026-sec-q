@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handler Page</title>
+    <title>Handler</title>
 </head>
 <body>
 
 <h2>Handler Page</h2>
 
 <?php
-$email = "";   
+$email = $_POST["email"];  
+$length = strlen($email);   
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];   
-    $length = strlen($email);   
-
-    echo "Your Email is: " . $email . "<br>";
-    echo "Length of Email: " . $length;
-}
+echo "Email: " . $email . "<br>";
+echo "Length: " . $length;
 ?>
 
 </body>

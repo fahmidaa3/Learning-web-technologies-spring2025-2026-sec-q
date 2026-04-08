@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form A</title>
+
+    <script>
+        function showInfo() {
+            alert("Enter a valid email (example@gmail.com)");
+        }
+    </script>
+
+    <style>
+        .info {
+            margin-left: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Form A</h2>
+
+<form method="post" action="handler.php">
+    EMAIL:<br>
+
+    <input type="text" name="email" required>
+    <span class="info" onclick="showInfo()">i</span>
+
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
