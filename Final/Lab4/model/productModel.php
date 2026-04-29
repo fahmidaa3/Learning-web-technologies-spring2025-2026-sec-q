@@ -1,7 +1,6 @@
 <?php
 include('../config/database.php');
 
-// ADD PRODUCT
 function addProduct($name){
     global $conn;
 
@@ -9,7 +8,6 @@ function addProduct($name){
     $conn->query($sql);
 }
 
-// GET ALL PRODUCTS
 function getProducts(){
     global $conn;
 
@@ -25,7 +23,6 @@ function getProducts(){
     return $products;
 }
 
-// DELETE
 function deleteProduct($id){
     global $conn;
 
@@ -33,7 +30,6 @@ function deleteProduct($id){
     $conn->query($sql);
 }
 
-// UPDATE
 function updateProduct($id, $name){
     global $conn;
 

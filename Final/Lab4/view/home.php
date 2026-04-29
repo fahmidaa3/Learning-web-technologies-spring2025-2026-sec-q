@@ -27,7 +27,6 @@ $products = getProducts();
 
 <hr>
 
-<!-- ADMIN ADD BOX -->
 <?php if($user['type']=='admin'){ ?>
 <div class="container">
 <form method="POST" action="../controller/productController.php">
@@ -39,13 +38,11 @@ $products = getProducts();
 
 <h3>Product List</h3>
 
-<!-- PRODUCT LIST -->
 <?php foreach($products as $p){ ?>
 <div class="product-box">
 
     <h4><?php echo $p['name']; ?></h4>
 
-    <!-- DELETE -->
     <?php if($user['type']=='admin'){ ?>
         <a href="../controller/productController.php?delete=<?php echo $p['id']; ?>">Delete</a>
     <?php } ?>

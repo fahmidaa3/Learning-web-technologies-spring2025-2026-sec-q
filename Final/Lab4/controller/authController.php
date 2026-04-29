@@ -2,7 +2,6 @@
 include('../config/session.php');
 include('../model/userModel.php');
 
-// REGISTER
 if(isset($_POST['register'])){
 
     $name = $_POST['name'];
@@ -16,7 +15,6 @@ if(isset($_POST['register'])){
     exit();
 }
 
-// LOGIN
 if(isset($_POST['login'])){
 
     $email = $_POST['email'];
