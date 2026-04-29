@@ -47,7 +47,6 @@ $products = getProducts();
         <a href="../controller/productController.php?delete=<?php echo $p['id']; ?>">Delete</a>
     <?php } ?>
 
-    <!-- UPDATE -->
     <?php if($user['type']=='customer'){ ?>
         <form method="POST" action="../controller/productController.php">
             <input type="hidden" name="id" value="<?php echo $p['id']; ?>">
